@@ -11,7 +11,7 @@
     "moment",
     "date",
     "range",
-    "time",
+    "time"
   ],
   "license": "MIT",
   "ignore": [
