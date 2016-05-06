@@ -18,7 +18,7 @@
     moment.fn.preciseDiff = function(d2) {
         return moment.preciseDiff(this, d2);
     };
-    moment.preciseDiff = function(d1, d2) {
+    moment.preciseDiff = function(d1, d2,numeric) {
         var m1 = moment(d1), m2 = moment(d2);
         if (m1.isSame(m2)) {
             return STRINGS.nodiff;
@@ -61,10 +61,22 @@
             mDiff = 12 + mDiff;
             yDiff--;
         }
+		
+		if(numeric){
+			return {
+				years : yDiff,
+				months: mDiff,
+				days: dDiff,
+				hours: hourDiff,
+				minutes: minDiff,
+				seconds: secDiff
+			}
+		}
 
         function pluralize(num, word) {
             return num + ' ' + STRINGS[word + (num === 1 ? '' : 's')];
         }
+		
         var result = [];
 
         if (yDiff) {
